@@ -1,0 +1,29 @@
+services:
+  ne4j:
+    image: neo4j:5.25.1
+    container_name: neo4j
+    restart: always
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    environment:
+      - NEO4J_AUTH=neo4j/lorne4j#2024
+    volumes:
+      - "./data-neo4j:/data"
+  mysql:
+    image: mysql:8.0.29
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - "./data-mysql:/var/lib/mysql"
+    environment:
+      TZ: "Asia/Shanghai"
+      MYSQL_ROOT_PASSWORD: lorne4j#2024
+      MYSQL_DATABASE: example
+    restart: always
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: "/usr/bin/mysql --user=root --password=lorne4j#2024 --execute \"SHOW DATABASES;\""
+      interval: 2s
+      timeout: 20s
+

@@ -1,0 +1,49 @@
+### 添加用户
+POST {{url}}/example/saveUser
+Content-Type: application/json
+
+{
+  "name": "lorne"
+}
+
+
+### 添加人员
+POST{{url}}/example/savePerson
+Content-Type: application/json
+
+{
+  "id": "3",
+  "name": "tom"
+}
+
+### 添加人员关系
+POST {{url}}/example/addRelationship
+Content-Type: application/json
+
+{
+  "sourceId": "1",
+  "targetId": "2",
+  "since": 2022
+}
+
+### 解除人员关系
+DELETE {{url}}/example/removeRelationShip
+Content-Type: application/json
+
+{
+  "sourceId": "1",
+  "removeId": "3"
+}
+
+
+### 清空数据
+DELETE {{url}}/example/clearAll
+
+
+### 获取人员列表
+GET {{url}}/example/persons
+
+
+### 删除人员
+DELETE {{url}}/example/deletePerson?
+    id=2
